@@ -1,5 +1,6 @@
 package com.example.workwithapi;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -48,8 +49,19 @@ public class MainActivity extends AppCompatActivity {
         RequestMaker requestMaker = new RequestMaker();
 
 
-       ArrayList<User> list =  requestMaker.GetAllUsers(client);
-       Log.d("List", Integer.toString(list.size()));
+        ArrayList<User> list =  requestMaker.GetAllUsers(client);
+        Log.d("List_In_UI", Integer.toString(list.size()));
+
+        User user = requestMaker.GetUserByLogin(client,"Katia22" );
+        Log.d("User_In_UI", user.getName() + user.getPassword());
+
+
+
+
+
+
+
+
       if(list.size() != 0 && list != null ) textReq.setText(list.size());
 
 //        service.submit(new Runnable() {
