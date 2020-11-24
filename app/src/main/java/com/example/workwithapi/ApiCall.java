@@ -54,10 +54,13 @@ import okhttp3.Response;
                     .post(body)
                     .build();
             Response response = client.newCall(request).execute();
+            String answer = response.body().string();
+            Log.d("ApiCall_Post", answer);
 
             switch (response.code()){
 
-                case 200: return response.body().string();
+                case 200: return answer;
+                case 201 : return answer;
                 case 404: return "NOT_FOUND";
                 case 500: return "SERVER_ERROR";
                 default:return "ERROR";
